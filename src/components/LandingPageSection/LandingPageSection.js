@@ -147,12 +147,13 @@ function LandingPageSection({ onSearchSubmit }) {
               ) : (
                 <>
               <h1 className={css.contentTitle}>
-              Prova nuovi hobby, vicino a te
+              Prova nuovi hobby creativi, vicino a te 
               </h1>
               <p className={css.teamText}>
-              Scopri il piacere di creare qualcosa con le tue mani, senza pressioni o aspettative. 
-Che tu venga da solo o con un paio di amici, i nostri workshop sono il posto perfetto per sporcarsi le mani, ridere degli errori, e creare qualcosa di unico. 
-Ritrova quella parte di te che non vede l’ora di esplorare, sbagliare e brillare.
+              Scopri il piacere di creare qualcosa con le tue mani, senza pressioni o aspettative. Che tu 
+venga da solo o con gli amici, i nostri workshop creativi sono il posto perfetto per sporcarsi le 
+mani e liberare la mente. Pittura, ceramica, yoga, cucina, tarocchi, origami, musica: scegli la 
+tua attività preferita e prenotala in un click. 
               </p>
               </>
             )}
