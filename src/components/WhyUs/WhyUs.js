@@ -46,7 +46,7 @@ const WhyUs = ({ isTeamBuilding }) => {
         ) : (
           <>
             <div className={css.item}>
-              <h3 className={css.heading}>Incontra amici brillanti e creativi</h3>
+              <h3 className={css.heading}>Incontra nuovi amici brillanti e creativi </h3>
               <p className={css.description}>
                 Condividi idee, risate e ispirazione con chi ama esplorare e creare, proprio come te
               </p>
@@ -58,7 +58,7 @@ const WhyUs = ({ isTeamBuilding }) => {
               </p>
             </div>
             <div className={css.item}>
-              <h3 className={css.heading}>Senza limiti né giudizi</h3>
+              <h3 className={css.heading}>Divertiti senza limiti nè giudizi</h3>
               <p className={css.description}>Non serve essere perfetti: basta esserci</p>
             </div>
             <div className={css.item}>
@@ -68,11 +68,11 @@ const WhyUs = ({ isTeamBuilding }) => {
               </p>
             </div>
             <div className={css.item}>
-              <h3 className={css.heading}>No stress</h3>
+              <h3 className={css.heading}>Prenotazione no stress</h3>
               <p className={css.description}>Scopri, prenota e paga in 30 secondi</p>
             </div>
             <div className={css.item}>
-              <h3 className={css.heading}>+70 Artigiani</h3>
+              <h3 className={css.heading}>100 artigiani e +300 hobby creativi</h3>
               <p className={css.description}>Scopri il tuo artigiano preferito, nella tua città</p>
             </div>
           </>

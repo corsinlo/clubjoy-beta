@@ -19,17 +19,18 @@ const HowItWorks = ({isTeamBuilding}) => {
       <div className={css.steps}>
         <div className={css.step} onClick={handleNavigate}>
           <img src={img1} alt="Step 1" className={css.image} />
-          <p>esplora</p>
+          <p>esplora tutti gli hobby creativi</p>
         </div>
         <div className={css.arrow}></div>
         <div className={css.step} onClick={handleNavigate}>
           <img src={img2} alt="Step 2" className={css.image} />
-          <p>scegli</p>
+          <p>scegli il tuo preferito</p>
         </div>
         <div className={css.arrow}></div>
         <div className={css.step}>
           <img src={img3} alt="Step 3" className={css.image} />
           <p>
+          prenotalo ed
             en<span style={{ color: '#0048ff' }}>joy</span>
           </p>
         </div>
