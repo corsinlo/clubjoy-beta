@@ -36,6 +36,7 @@
   display: flex;
   flex-wrap: wrap; /* Allow wrapping for responsiveness */
   gap: 16px;
+  margin-top: 20px;
   margin-bottom: 20px;
   justify-content: space-between; /* Distribute cards evenly */
 }

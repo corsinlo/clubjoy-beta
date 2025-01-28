@@ -36,7 +36,7 @@ const ActionTeamButtons = ({ isTeamBuilding }) => {
   return (
     <div className={css.buttonContainer}>
       {/* Open the modal */}
-      <button onClick={handleOpenModal} className={css.parlaConNoiButton}>
+      <button onClick={handleWhatsApp} className={css.parlaConNoiButton}>
         Parla con noi
       </button>
 
