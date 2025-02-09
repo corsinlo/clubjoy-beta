@@ -152,6 +152,13 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
   const listingType = publicData.listingType;
   const listingId = listing.id.uuid;
 
+  if (
+    listingId === '67a1f051-5349-4adc-b2d9-5f3db3070d6b' ||
+    listingId === '67994f77-331c-4ed2-87e7-6e539ed8f0db'
+  ) {
+    providerCommission.percentage = 5;
+  }
+
   /**
    * Pricing starts with order's base price:
    * Listing's price is related to a single unit. It needs to be multiplied by quantity
