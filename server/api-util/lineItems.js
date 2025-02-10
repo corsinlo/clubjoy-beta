@@ -154,7 +154,8 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
 
   if (
     listingId === '67a1f051-5349-4adc-b2d9-5f3db3070d6b' ||
-    listingId === '67994f77-331c-4ed2-87e7-6e539ed8f0db'
+    listingId === '67994f77-331c-4ed2-87e7-6e539ed8f0db' ||
+    listingId === '67a76dee-7ebe-452a-b025-51f2e085219d'
   ) {
     providerCommission.percentage = 5;
   }
