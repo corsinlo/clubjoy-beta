@@ -160,6 +160,10 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     providerCommission.percentage = 5;
   }
 
+  if (orderData?.voucherFee?.id === 'NEWJOYNER'){
+    providerCommission.percentage = 0;
+  }
+
   /**
    * Pricing starts with order's base price:
    * Listing's price is related to a single unit. It needs to be multiplied by quantity
