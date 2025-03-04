@@ -31,33 +31,33 @@ const getItemQuantityAndLineItems = (orderData, publicData, currency) => {
   // Calculate shipping fee if applicable
   const shippingFee = isShipping
     ? calculateShippingFee(
-        shippingPriceInSubunitsOneItem,
-        shippingPriceInSubunitsAdditionalItems,
-        currency,
-        quantity
-      )
+      shippingPriceInSubunitsOneItem,
+      shippingPriceInSubunitsAdditionalItems,
+      currency,
+      quantity
+    )
     : null;
 
   // Add line-item for given delivery method.
   // Note: by default, pickup considered as free.
   const deliveryLineItem = !!shippingFee
     ? [
+      {
+        code: 'line-item/shipping-fee',
+        unitPrice: shippingFee,
+        quantity: 1,
+        includeFor: ['customer', 'provider'],
+      },
+    ]
+    : isPickup
+      ? [
         {
-          code: 'line-item/shipping-fee',
-          unitPrice: shippingFee,
+          code: 'line-item/pickup-fee',
+          unitPrice: new Money(0, currency),
           quantity: 1,
           includeFor: ['customer', 'provider'],
         },
       ]
-    : isPickup
-      ? [
-          {
-            code: 'line-item/pickup-fee',
-            unitPrice: new Money(0, currency),
-            quantity: 1,
-            includeFor: ['customer', 'provider'],
-          },
-        ]
       : [];
 
   return { quantity, extraLineItems: deliveryLineItem };
@@ -160,7 +160,7 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     providerCommission.percentage = 5;
   }
 
-  if (orderData?.voucherFee?.id === 'NEWJOYNER'){
+  if (orderData?.voucherFee?.id === 'NEWJOYNER' || orderData?.voucherFee?.id === 'STAYPIGNA') {
     providerCommission.percentage = 0;
   }
 
@@ -236,24 +236,24 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
 
   const sizeFee = sizeFeePrice
     ? [
-        {
-          code: 'line-item/tappeto-Size-fees',
-          unitPrice: sizeFeePrice,
-          quantity: 1,
-          includeFor: ['provider', 'customer'],
-        },
-      ]
+      {
+        code: 'line-item/tappeto-Size-fees',
+        unitPrice: sizeFeePrice,
+        quantity: 1,
+        includeFor: ['provider', 'customer'],
+      },
+    ]
     : [];
 
   const voucherFee = voucherFeePrice
     ? [
-        {
-          code: 'line-item/voucher',
-          unitPrice: voucherFeePrice,
-          quantity: 1,
-          includeFor: ['customer', 'provider'],
-        },
-      ]
+      {
+        code: 'line-item/voucher',
+        unitPrice: voucherFeePrice,
+        quantity: 1,
+        includeFor: ['customer', 'provider'],
+      },
+    ]
     : [];
 
   const getNegation = (percentage) => {
@@ -314,13 +314,13 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
   // orderPrice - providerCommission = providerPayout
   const providerCommissionMaybe = hasCommissionPercentage(providerCommission)
     ? [
-        {
-          code: 'line-item/provider-commission',
-          unitPrice: calculateTotalFromLineItems([order, ...voucherFee, ...sizeFee]),
-          percentage: getNegation(providerCommission.percentage),
-          includeFor: ['provider'],
-        },
-      ]
+      {
+        code: 'line-item/provider-commission',
+        unitPrice: calculateTotalFromLineItems([order, ...voucherFee, ...sizeFee]),
+        percentage: getNegation(providerCommission.percentage),
+        includeFor: ['provider'],
+      },
+    ]
     : [];
 
   // The customer commission is what the customer pays for the transaction, and
@@ -328,13 +328,13 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
   // orderPrice + customerCommission = customerPayin
   const customerCommissionMaybe = hasCommissionPercentage(customerCommission)
     ? [
-        {
-          code: 'line-item/customer-commission',
-          unitPrice: calculateTotalFromLineItems([order, ...voucherFee]),
-          percentage: customerCommission.percentage,
-          includeFor: ['customer'],
-        },
-      ]
+      {
+        code: 'line-item/customer-commission',
+        unitPrice: calculateTotalFromLineItems([order, ...voucherFee]),
+        percentage: customerCommission.percentage,
+        includeFor: ['customer'],
+      },
+    ]
     : [];
 
   // Let's keep the base price (order) as first line item and provider and customer commissions as last.
