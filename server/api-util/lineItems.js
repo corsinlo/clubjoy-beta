@@ -160,6 +160,12 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     providerCommission.percentage = 5;
   }
 
+  if (
+    listingId === '67de98c4-cc5f-40ec-a7e6-29b309ad046d'
+  ) {
+    providerCommission.percentage = 20;
+  }
+
   if (orderData?.voucherFee?.id === 'NEWJOYNER' || orderData?.voucherFee?.id === 'STAYPIGNA') {
     providerCommission.percentage = 0;
   }
